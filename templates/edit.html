@@ -3,7 +3,7 @@
 {% block content %}
 <h1>{% block title %} Edit "{{ post['title'] }}" {% endblock %}</h1>
 
-<form method="post">
+<form method="post" class="formContainer">
     <div class="form-group">
         <label for="title">Title</label>
         <input type="text" name="title" placeholder="Post title"
@@ -18,15 +18,15 @@
                   class="form-control">{{ request.form['content'] or post['content'] }}</textarea>
     </div>
     <div class="form-group">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Submit Edit</button>
     </div>
 </form>
 <hr>
 
 <form action="{{ url_for('delete', id=post['id']) }}" method="POST">
-    <input type="submit" value="Delete Post"
+    <input type="submit" value="Complete Item"
             class="btn btn-danger btn-sm"
-            onclick="return confirm('Are you sure you want to delete this post?')">
+            onclick="return confirm('Are you sure you want to delete this item?')">
 </form>
 
 {% endblock %}
