@@ -19,7 +19,7 @@ def get_post(post_id):
 application = Flask(__name__)
 application.config['SECRET_KEY'] = 'secretsecretsecretkey'
 
-
+#Renders Home Page ---------
 @application.route('/')
 def index():
     conn = get_db_connection()
@@ -27,7 +27,7 @@ def index():
     conn.close()
     return render_template('index.html', posts=posts)
 
-
+#Shows a Single Post Page -------
 @application.route('/<int:post_id>')
 def post(post_id):
     post = get_post(post_id)
@@ -55,7 +55,6 @@ def create():
 
 
 #Edit Post Function -------
-
 @application.route('/<int:id>/edit', methods=('GET', 'POST'))
 def edit(id):
     post = get_post(id)
@@ -88,6 +87,8 @@ def delete(id):
     conn.close()
     flash('"{}" was successfully deleted!'.format(post['title']))
     return redirect(url_for('index'))
+
+
 
 if __name__ == "__main__":
     application.run()
